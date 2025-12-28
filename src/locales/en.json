@@ -1,0 +1,117 @@
+{
+  "nav": {
+    "home": "Home",
+    "articles": "Insights",
+    "cars": "Automotive",
+    "tech": "Technology",
+    "policy": "Purchase Policy",
+    "contact": "Contact Us",
+    "browse": "Exclusive Categories",
+    "whatsapp_support": "Concierge via WhatsApp"
+  },
+  "hero": {
+    "title": "Al-Hamali Trading Est: Sourcing, Wholesale & Distribution",
+    "subtitle": "Your premier partner for securing top-tier global and local products. We combine logistical efficiency with diverse commercial options to meet all business requirements."
+  },
+  "sections": {
+    "categories": "Our Product Sectors",
+    "sections_desc": "Offering a wide range of reliable commercial solutions tailored for retailers, businesses, and individual consumers.",
+    "why_choose_us": "Why Partner with Al-Hamali Trading?",
+    "why_desc": "Our expertise in supply chains and strong sourcing enables us to offer competitive pricing with high quality standards.",
+    "how_it_works": "Supply & Ordering Process"
+  },
+  "buttons": {
+    "view_products": "Explore Selection",
+    "view_details": "View Masterpiece",
+    "order_whatsapp": "Inquire via WhatsApp",
+    "order_details": "Technical Specifications",
+    "back_home": "Return to Overview",
+    "back_category": "Back to Category",
+    "start_conversation": "Initiate Consultation"
+  },
+  "labels": {
+    "stock": "Premium Inventory Available",
+    "handling": "White-Glove Professional Handling",
+    "quality": "100% Quality & Excellence Assurance",
+    "interested_in": "Greeting, I would like to inquire about",
+    "prefilled_message": "Hello Ahmali Team, I am interested in acquiring further details regarding [{{name}}] (Ref: {{id}}). Could you please provide information on availability and procurement process?",
+    "not_found": "Content Currently Unavailable",
+    "no_products": "This collection is currently being curated with new additions."
+  },
+  "contact": {
+    "title": "Connect with Our Experts",
+    "desc": "Our team is dedicated to assisting you in making an informed choice. Reach out via our official channels for immediate professional assistance.",
+    "info": "Official Credentials",
+    "phone": "Direct WhatsApp Channel",
+    "email": "Corporate Email",
+    "address": "Showroom / Global Location",
+    "chat_title": "Direct Consultation",
+    "chat_desc": "Our specialized team is ready to address your inquiries and guide you through our select offerings."
+  },
+  "home_hero": {
+    "elite_tag": "Trading . Supply . Investment",
+    "title_1": "Trading with Trust,",
+    "title_2": "Supplying Excellence",
+    "subtitle": "Al-Hamali Trading Est is your trusted gateway for securing the finest global and local products. Our expertise ranges from cars to the most sophisticated tech and systems.",
+    "cta_primary": "Start Business Now",
+    "cta_secondary": "Explore Articles"
+  },
+  "home_sectors": {
+    "tag": "Commercial Ecosystem",
+    "title": "Key Trading Sectors",
+    "subtitle": "Diversity covering the Saudi market needs with precision and professionalism.",
+    "auto": {
+      "title": "Auto Sector",
+      "desc": "Supplying the latest models at competitive prices."
+    },
+    "tech": {
+      "title": "Tech & Systems",
+      "desc": "Advanced computer and network solutions for business."
+    },
+    "imaging": {
+      "title": "Imaging Systems",
+      "desc": "Professional cameras and global surveillance systems."
+    },
+    "view_details": "View Details"
+  },
+  "home_about": {
+    "title": "About Al-Hamali Trading",
+    "desc": "A fresh commercial establishment, launching from Riyadh to chart a new path in the world of supply. We believe that commercial honesty is the strongest currency in the market.",
+    "stats": {
+      "import": "Direct Import",
+      "import_val": "Fast & Secure",
+      "quality": "Certified Quality",
+      "quality_val": "100% Guaranteed",
+      "distribution": "Wide Distribution",
+      "distribution_val": "All KSA Regions",
+      "support": "Continuous Support",
+      "support_val": "Dedicated Team"
+    },
+    "card_title": "Absolute Trust",
+    "card_desc": "Committed to all Saudi and international quality standards."
+  },
+  "home_footer_cta": {
+    "title": "Let's Start a New Trading Success Story",
+    "button": "Contact Us Now"
+  },
+  "articles": {
+    "read_more": "Read Full Insight"
+  },
+  "policy_page": {
+    "purchase_title": "Executive Purchase Protocol",
+    "purchase_desc": "At Ahmali Establishment, we rely on direct communication to ensure service precision. Every inquiry is handled with personalized attention.",
+    "purchase_points": [
+      "Rigorous technical specification confirmation.",
+      "Customized logistics for every engagement.",
+      "Full transparency in pricing and availability."
+    ],
+    "return_title": "Quality & Return Policy",
+    "return_desc": "Our commitment to quality is uncompromising. We guarantee that products reach you in optimal condition, meeting international standards.",
+    "return_points": [
+      "Comprehensive quality inspection post-handling.",
+      "Proactive support for technical resolutions.",
+      "Flexible policy for unforeseen defects."
+    ],
+    "legal_info": "For any legal inquiries, please contact our corporate office."
+  }
+}
