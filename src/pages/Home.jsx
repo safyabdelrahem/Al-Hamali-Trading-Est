@@ -62,32 +62,75 @@ const Home = () => {
             {/* Trading Ecosystem - Pure Card Design */}
             <section id="sectors" className="py-40 bg-white">
                 <div className="container mx-auto px-6">
+                    {/* Header */}
                     <div className="max-w-4xl mx-auto text-center mb-32 space-y-8 animate-in fade-in duration-700">
-                        <div className="inline-block text-blue-600 font-black tracking-[0.4em] uppercase text-xs bg-blue-50 px-4 py-2 rounded-lg">{t('home_sectors.tag')}</div>
+                        <div className="inline-block text-blue-600 font-black tracking-[0.4em] uppercase text-xs bg-blue-50 px-4 py-2 rounded-lg">
+                            {t('home_sectors.tag')}
+                        </div>
+
                         <h2 className="text-4xl md:text-7xl font-black text-brand-primary leading-tight tracking-tighter">
                             {t('home_sectors.title')}
                         </h2>
-                        <p className="text-xl text-slate-500 font-medium">{t('home_sectors.subtitle')}</p>
+
+                        <p className="text-xl text-slate-500 font-medium">
+                            {t('home_sectors.subtitle')}
+                        </p>
                     </div>
 
+                    {/* Cards */}
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
                         {[
-                            { title: t('home_sectors.auto.title'), icon: Car, color: 'blue', desc: t('home_sectors.auto.desc') },
-                            { title: t('home_sectors.tech.title'), icon: Monitor, color: 'indigo', desc: t('home_sectors.tech.desc') },
-                            { title: t('home_sectors.imaging.title'), icon: Camera, color: 'slate', desc: t('home_sectors.imaging.desc') }
+                            { title: t('home_sectors.auto.title'), icon: Car, desc: t('home_sectors.auto.desc') },
+                            { title: t('home_sectors.tech.title'), icon: Monitor, desc: t('home_sectors.tech.desc') },
+                            { title: t('home_sectors.imaging.title'), icon: Camera, desc: t('home_sectors.imaging.desc') }
                         ].map((sector, i) => (
-                            <div key={i} className="group p-12 rounded-[3rem] bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-2xl hover:shadow-blue-900/5 transition-all duration-700 relative overflow-hidden">
-                                <div className={`w-20 h-20 rounded-3xl bg-white shadow-xl flex items-center justify-center text-blue-600 mb-10 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white transition-all duration-500`}>
-                                    <sector.icon size={36} />
+                            <div
+                                key={i}
+                                className="group p-12 rounded-[3rem] bg-slate-50 border border-slate-100 
+                    hover:bg-white hover:shadow-2xl hover:shadow-blue-900/5 
+                    transition-all duration-700 relative overflow-hidden"
+                            >
+                                {/* Content */}
+                                <div className="relative z-10">
+                                    <div
+                                        className="w-20 h-20 rounded-3xl bg-white shadow-xl 
+                            flex items-center justify-center text-blue-600 mb-10
+                            group-hover:scale-110 group-hover:bg-blue-600 
+                            group-hover:text-white transition-all duration-500"
+                                    >
+                                        <sector.icon size={36} />
+                                    </div>
+
+                                    <h3 className="text-2xl font-black text-brand-primary mb-6">
+                                        {sector.title}
+                                    </h3>
+
+                                    <p className="text-slate-500 text-lg leading-relaxed mb-8">
+                                        {sector.desc}
+                                    </p>
+
+                                    <div
+                                        className="text-blue-600 font-black text-sm flex items-center gap-2 cursor-pointer 
+                            group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform"
+                                    >
+                                        {t('home_sectors.view_details')}
+                                        <ArrowRight size={18} className="rtl:rotate-180" />
+                                    </div>
                                 </div>
-                                <h3 className="text-2xl font-black text-brand-primary mb-6">{sector.title}</h3>
-                                <p className="text-slate-500 text-lg leading-relaxed mb-8">{sector.desc}</p>
-                                <div className="text-blue-600 font-black text-sm flex items-center gap-2 cursor-pointer group-hover:translate-x-1 transition-transform rtl:group-hover:-translate-x-1">
-                                    {t('home_sectors.view_details')}
-                                    <ArrowRight size={18} className="rtl:rotate-180" />
+
+                                {/* Background Number */}
+                                <div
+                                    className="
+                        absolute -bottom-6 
+                        ltr:-right-6 rtl:-left-6
+                        text-9xl font-black text-slate-200/40 
+                        select-none pointer-events-none
+                        group-hover:text-blue-100 transition-colors
+                        z-0
+                        "
+                                >
+                                    0{i + 1}
                                 </div>
-                                {/* Subtle abstract numbers */}
-                                <div className="absolute -bottom-6 -right-6 text-9xl font-black text-slate-200/40 select-none group-hover:text-blue-100 transition-colors">0{i + 1}</div>
                             </div>
                         ))}
                     </div>
