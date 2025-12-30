@@ -8,6 +8,7 @@ import ProductDetail from './pages/ProductDetail'
 import Contact from './pages/Contact'
 import Articles from './pages/Articles'
 import Policy from './pages/Policy'
+import WhatsAppButton from './components/WhatsAppButton'
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
 
       </main>
       <Footer />
+      <WhatsAppButton />
     </div>
   )
 }

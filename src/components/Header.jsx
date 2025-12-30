@@ -1,17 +1,25 @@
 import React from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
-import { MessageCircle, Menu, X, Globe } from 'lucide-react'
+import { MessageCircle, Menu, X, Globe, Sun, Moon, BookOpen } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { COMPANY_INFO } from '../data/mockData'
+import { useTheme } from '../context/ThemeContext'
 
 const Header = () => {
     const [isOpen, setIsOpen] = React.useState(false)
     const [scrolled, setScrolled] = React.useState(false)
     const { t, i18n } = useTranslation()
+    const { theme, setTheme } = useTheme()
     const location = useLocation()
     const lang = i18n.language
     const isAr = lang === 'ar'
     const isHome = location.pathname === '/'
+
+    const themes = [
+        { id: 'day', icon: Sun, label: isAr ? 'نهاري' : 'Day' },
+        { id: 'reading', icon: BookOpen, label: isAr ? 'قراءة' : 'Read' },
+        { id: 'night', icon: Moon, label: isAr ? 'ليلي' : 'Night' },
+    ]
 
     React.useEffect(() => {
         const handleScroll = () => setScrolled(window.scrollY > 10)
@@ -40,11 +48,11 @@ const Header = () => {
             <div className="container mx-auto px-6">
                 <div
                     className={`flex justify-between items-center px-8 py-3 rounded-2xl transition-all duration-500 animate-in fade-in slide-in-from-top-4 duration-1000 ${scrolled || !isHome
-                        ? 'bg-white/95 backdrop-blur-xl shadow-lg border border-slate-100'
-                        : 'bg-white/5 backdrop-blur-sm border border-white/10'
+                        ? 'bg-brand-surface/95 backdrop-blur-xl shadow-lg border border-brand-slate/10'
+                        : 'bg-brand-muted/80 backdrop-blur-md border border-brand-slate/20 shadow-sm'
                         }`}
                 >
-                    <Link to="/" className={`text-xl md:text-2xl font-extrabold tracking-tight transition-colors ${scrolled || !isHome ? 'text-brand-primary' : 'text-white'}`}>
+                    <Link to="/" className={`text-xl md:text-2xl font-extrabold tracking-tight transition-colors text-brand-text`}>
                         {COMPANY_INFO.name[lang] || COMPANY_INFO.name.ar}
                     </Link>
 
@@ -57,8 +65,8 @@ const Header = () => {
                                     to={link.to}
                                     className={({ isActive }) =>
                                         `text-[13px] font-semibold transition-all relative py-1 hover:-translate-y-0.5 whitespace-nowrap ${isActive
-                                            ? (scrolled || !isHome ? 'text-brand-accent' : 'text-white')
-                                            : (scrolled || !isHome ? 'text-slate-600 hover:text-brand-accent' : 'text-white/80 hover:text-white')
+                                            ? 'text-brand-accent'
+                                            : 'text-brand-slate hover:text-brand-accent'
                                         }`
                                     }
                                 >
@@ -66,7 +74,7 @@ const Header = () => {
                                         <>
                                             {link.label}
                                             {isActive && (
-                                                <span className={`absolute -bottom-1 left-0 w-full h-0.5 rounded-full ${scrolled || !isHome ? 'bg-brand-accent' : 'bg-white'}`}></span>
+                                                <span className={`absolute -bottom-1 left-0 w-full h-0.5 rounded-full bg-brand-accent`}></span>
                                             )}
                                         </>
                                     )}
@@ -74,31 +82,37 @@ const Header = () => {
                             ))}
                         </div>
 
-                        <div className={`h-4 w-px mx-1 ${scrolled || !isHome ? 'bg-slate-200' : 'bg-white/20'}`}></div>
+                        <div className="flex items-center bg-brand-muted/50 p-1 rounded-xl border border-brand-slate/10">
+                            {themes.map((t) => (
+                                <button
+                                    key={t.id}
+                                    onClick={() => setTheme(t.id)}
+                                    className={`p-2 rounded-lg transition-all ${theme === t.id
+                                        ? 'bg-brand-surface text-brand-accent shadow-sm'
+                                        : 'text-brand-slate hover:text-brand-text'
+                                        }`}
+                                    title={t.label}
+                                >
+                                    <t.icon size={16} />
+                                </button>
+                            ))}
+                        </div>
+
+                        <div className={`h-4 w-px mx-1 bg-brand-slate/20`}></div>
 
                         <button
                             onClick={toggleLanguage}
-                            className={`flex items-center gap-2 font-bold text-xs px-3 py-2 rounded-lg transition-all ${scrolled || !isHome ? 'text-slate-700 hover:bg-slate-50' : 'text-white hover:bg-white/10'}`}
+                            className={`flex items-center gap-2 font-bold text-xs px-3 py-2 rounded-lg transition-all text-brand-text hover:bg-brand-muted`}
                         >
                             <Globe size={16} />
                             {currentLangName}
                         </button>
-
-                        <a
-                            href={`https://wa.me/${COMPANY_INFO.whatsapp.replace(/\D/g, '')}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="bg-brand-whatsapp text-white px-5 py-2.5 rounded-xl text-[13px] font-bold transition-all shadow-md shadow-emerald-900/10 hover:shadow-xl hover:shadow-emerald-900/20 hover:-translate-y-0.5 whitespace-nowrap flex items-center gap-2"
-                        >
-                            <MessageCircle size={18} />
-                            {t('nav.whatsapp_support')}
-                        </a>
                     </nav>
 
                     {/* Mobile Toggle */}
                     <div className="flex items-center gap-3 xl:hidden">
                         <button
-                            className={`p-2 rounded-xl transition-colors ${scrolled || !isHome ? 'text-brand-primary hover:bg-slate-100' : 'text-white hover:bg-white/10'}`}
+                            className={`p-2 rounded-xl transition-colors text-brand-text hover:bg-brand-muted`}
                             onClick={() => setIsOpen(!isOpen)}
                         >
                             {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -126,6 +140,23 @@ const Header = () => {
                         ))}
                     </div>
                     <div className="pt-8 space-y-4">
+                        {/* Theme Switcher Mobile */}
+                        <div className="grid grid-cols-3 gap-3">
+                            {themes.map((t) => (
+                                <button
+                                    key={t.id}
+                                    onClick={() => setTheme(t.id)}
+                                    className={`flex flex-col items-center gap-2 py-4 rounded-xl border transition-all ${theme === t.id
+                                        ? 'bg-brand-accent text-white border-brand-accent'
+                                        : 'bg-white/5 text-white/60 border-white/10'
+                                        }`}
+                                >
+                                    <t.icon size={20} />
+                                    <span className="text-[10px] font-bold uppercase tracking-wider">{t.label}</span>
+                                </button>
+                            ))}
+                        </div>
+
                         <button
                             onClick={() => {
                                 toggleLanguage();

@@ -22,29 +22,29 @@ const CategoryDetail = () => {
     }
 
     return (
-        <div className="bg-brand-surface min-h-screen pt-32 pb-12">
+        <div className="bg-brand-muted min-h-screen pt-32 pb-12 lg:pb-20 transition-colors duration-700">
             <div className="container mx-auto px-4">
 
                 <header className="mb-16">
-                    <h1 className="text-4xl md:text-5xl font-extrabold text-brand-primary mb-6">{category.name[lang] || category.name.ar}</h1>
-                    <p className="text-xl text-slate-600 max-w-2xl leading-relaxed">{category.description[lang] || category.description.ar}</p>
+                    <h1 className="text-4xl md:text-5xl font-extrabold text-brand-text mb-6">{category.name[lang] || category.name.ar}</h1>
+                    <p className="text-xl text-brand-slate max-w-2xl leading-relaxed">{category.description[lang] || category.description.ar}</p>
                 </header>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                     {categoryProducts.map((prod) => (
-                        <div key={prod.id} className="bg-white rounded-2xl border border-slate-100 overflow-hidden card-hover flex flex-col h-full shadow-sm">
+                        <div key={prod.id} className="bg-brand-surface rounded-2xl border border-brand-slate/10 overflow-hidden card-hover flex flex-col h-full shadow-sm transition-all duration-700">
                             <div className="relative aspect-[4/5] overflow-hidden">
                                 <img src={prod.image} alt={prod.name[lang]} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                             </div>
                             <div className="p-8 flex flex-col flex-grow">
-                                <h3 className="font-bold text-xl mb-3 text-brand-primary">{prod.name[lang] || prod.name.ar}</h3>
-                                <p className="text-slate-500 text-sm mb-6 line-clamp-2 leading-relaxed">{prod.description[lang] || prod.description.ar}</p>
+                                <h3 className="font-bold text-xl mb-3 text-brand-text">{prod.name[lang] || prod.name.ar}</h3>
+                                <p className="text-brand-slate text-sm mb-6 line-clamp-2 leading-relaxed opacity-70">{prod.description[lang] || prod.description.ar}</p>
                                 <div className="mt-auto">
                                     <div className="mb-6">
                                         <span className="text-brand-accent font-bold text-3xl">{prod.price}</span>
                                     </div>
                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                                        <Link to={`/product/${prod.id}`} className="bg-slate-50 text-slate-700 text-center py-3 rounded-xl font-semibold hover:bg-slate-100 transition-colors text-sm">
+                                        <Link to={`/product/${prod.id}`} className="bg-brand-surface text-brand-text text-center py-3 rounded-xl font-semibold hover:bg-brand-muted transition-colors text-sm">
                                             {t('buttons.order_details')}
                                         </Link>
                                         <a

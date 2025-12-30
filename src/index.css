@@ -1,48 +1,100 @@
 @import url("https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap");
 @import "tailwindcss";
 
+:root {
+  /* --- DEFAULT: Reading Mode (Pure Grey) --- */
+  --color-brand-primary: #18181b;
+  --color-brand-accent: #71717a;
+  --color-brand-slate: #52525b;
+  --color-brand-whatsapp: #10b981;
+  --color-brand-surface: #ffffff;
+  --color-brand-muted: #f4f4f5;
+  --color-brand-text: #18181b;
+  --header-bg: rgba(255, 255, 255, 0.95);
+  --header-border: rgba(24, 24, 27, 0.1);
+  --btn-primary-bg: #18181b;
+  --btn-primary-text: #ffffff;
+  --shadow-color: rgba(15, 23, 42, 0.08);
+}
+
+[data-theme='night'] {
+  --color-brand-primary: #020617;
+  /* Deep Navy 950 */
+  --color-brand-accent: #3b82f6;
+  /* Blue 500 */
+  --color-brand-slate: #94a3b8;
+  /* Slate 400 */
+  --color-brand-surface: #0f172a;
+  /* Navy 900 */
+  --color-brand-muted: #020617;
+  /* Deep Navy 950 */
+  --color-brand-text: #ffffff;
+  --header-bg: rgba(2, 6, 23, 0.95);
+  --header-border: rgba(59, 130, 246, 0.1);
+  --btn-primary-bg: #3b82f6;
+  --btn-primary-text: #ffffff;
+  --shadow-color: rgba(0, 0, 0, 0.6);
+}
+
+[data-theme='day'] {
+  --color-brand-primary: #0f172a;
+  /* Navy 900 for a premium feel */
+  --color-brand-accent: #2563eb;
+  /* Royal Blue 600 */
+  --color-brand-slate: #64748b;
+  /* Slate 500 */
+  --color-brand-surface: #ffffff;
+  --color-brand-muted: #f8fafc;
+  /* Slate 50 */
+  --color-brand-text: #0f172a;
+  --header-bg: rgba(255, 255, 255, 0.95);
+  --header-border: rgba(15, 23, 42, 0.1);
+  --btn-primary-bg: #2563eb;
+  /* Royal Blue for visibility */
+  --btn-primary-text: #ffffff;
+  --shadow-color: rgba(37, 99, 235, 0.15);
+}
+
 @theme {
   --font-sans: "Cairo", "Inter", sans-serif;
   --font-display: "Cairo", "Inter", sans-serif;
 
-  /* --- BRAND COLORS: Change these values to update site colors --- */
-  --color-brand-primary: #0f172a;
-  /* MAIN BACKGROUND / TEXT COLOR */
-  --color-brand-accent: #2563eb;
-  /* BUTTONS / HIGHLIGHTS COLOR (BLUE) */
-  --color-brand-slate: #64748b;
-  /* SECONDARY TEXT / MUTED ELEMENTS */
-  --color-brand-whatsapp: #10b981;
-  /* WHATSAPP GREEN */
-  --color-brand-surface: #ffffff;
-  /* CARDS BACKGROUND / LIGHT BG */
-  --color-brand-muted: #f8fafc;
-  /* SOFT BACKGROUNDS */
-  /* ------------------------------------------------------------- */
+  --color-brand-primary: var(--color-brand-primary);
+  --color-brand-accent: var(--color-brand-accent);
+  --color-brand-slate: var(--color-brand-slate);
+  --color-brand-whatsapp: var(--color-brand-whatsapp);
+  --color-brand-surface: var(--color-brand-surface);
+  --color-brand-muted: var(--color-brand-muted);
+  --color-brand-text: var(--color-brand-text);
+  --color-btn-primary-bg: var(--btn-primary-bg);
+  --color-btn-primary-text: var(--btn-primary-text);
+  --color-brand-shadow: var(--shadow-color);
 }
 
 @layer base {
   body {
-    @apply text-slate-900 bg-white font-sans antialiased selection:bg-slate-900 selection:text-white;
+    background-color: var(--color-brand-muted);
+    color: var(--color-brand-text);
+    @apply font-sans antialiased transition-colors duration-500;
   }
 }
 
 @layer components {
   .glass-morphism {
-    background-color: rgba(255, 255, 255, 0.75);
+    background-color: var(--header-bg);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(15, 23, 42, 0.08);
+    border: 1px solid var(--header-border);
   }
 
   .nav-glass {
-    background-color: rgba(255, 255, 255, 0.03);
+    background-color: var(--header-bg);
     backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--header-border);
   }
 
   .premium-shadow {
-    box-shadow: 0 40px 100px -20px rgba(15, 23, 42, 0.08);
+    box-shadow: 0 40px 100px -20px var(--shadow-color);
   }
 
   .btn-whatsapp {
@@ -55,24 +107,31 @@
   }
 
   .btn-primary {
-    @apply bg-brand-primary text-white px-8 py-3.5 rounded-xl font-bold flex items-center gap-2.5 transition-all duration-500;
+    background-color: var(--btn-primary-bg);
+    color: var(--btn-primary-text);
+    @apply px-8 py-3.5 rounded-xl font-bold flex items-center gap-2.5 transition-all duration-500;
   }
 
   .btn-primary:hover {
-    @apply -translate-y-0.5 shadow-xl;
-    box-shadow: 0 20px 25px -5px rgba(15, 23, 42, 0.1), 0 10px 10px -5px rgba(15, 23, 42, 0.04);
+    @apply -translate-y-0.5 shadow-xl opacity-90;
+    box-shadow: 0 10px 30px var(--shadow-color);
   }
 
   .section-divider {
-    @apply w-12 h-1 bg-slate-200 rounded-full;
+    @apply w-12 h-1 bg-brand-accent rounded-full opacity-30;
   }
 
   .card-premium {
-    @apply bg-white border border-slate-100 p-8 rounded-[2rem] transition-all duration-500;
+    background-color: var(--color-brand-surface);
+    border: 1px solid var(--header-border);
+    @apply p-8 rounded-[2rem] transition-all duration-500;
+    color: var(--color-brand-text);
   }
 
   .card-premium:hover {
-    @apply border-slate-200 -translate-y-1;
-    box-shadow: 0 20px 50px rgba(15, 23, 42, 0.05);
+    @apply -translate-y-1;
+    border-color: var(--color-brand-accent);
+    box-shadow: 0 20px 50px var(--shadow-color);
   }
+
 }

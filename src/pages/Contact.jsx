@@ -9,22 +9,22 @@ const Contact = () => {
     const isAr = lang === 'ar'
 
     return (
-        <div className="bg-brand-muted min-h-screen pt-40 pb-24 lg:pb-32 overflow-hidden relative">
+        <div className="bg-brand-muted min-h-screen pt-40 pb-24 lg:pb-32 overflow-hidden relative transition-colors duration-700">
             {/* Decorative Blob */}
             <div className="absolute top-0 left-0 w-96 h-96 bg-brand-accent/5 blur-[120px] rounded-full -translate-x-1/2 -translate-y-1/2"></div>
 
             <div className="container mx-auto px-4 relative z-10">
                 <div className="max-w-6xl mx-auto">
-                    <header className="text-center mb-24">
-                        <div className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-white border border-slate-100 shadow-sm text-brand-accent mb-8 font-bold tracking-widest uppercase text-xs">
+                    <header className="text-center mb-24 transition-colors duration-700">
+                        <div className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-brand-surface border border-brand-slate/10 shadow-sm text-brand-accent mb-8 font-bold tracking-widest uppercase text-xs">
                             <Phone size={16} />
                             {t('nav.contact')}
                         </div>
-                        <h1 className="text-5xl md:text-8xl font-black text-brand-primary mb-8 font-display tracking-tight leading-none">{t('contact.title')}</h1>
-                        <p className="text-xl md:text-2xl text-slate-500 max-w-2xl mx-auto leading-relaxed">
+                        <h1 className="text-5xl md:text-8xl font-black text-brand-text mb-8 font-display tracking-tight leading-none">{t('contact.title')}</h1>
+                        <p className="text-xl md:text-2xl text-brand-slate max-w-2xl mx-auto leading-relaxed">
                             {t('contact.desc')}
                         </p>
-                        <div className="w-24 h-2 bg-brand-accent mx-auto mt-12 rounded-full"></div>
+                        <div className="w-24 h-2 bg-brand-accent mx-auto mt-12 rounded-full opacity-30"></div>
                     </header>
 
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
@@ -35,13 +35,13 @@ const Contact = () => {
                                 { icon: Mail, label: t('contact.email'), value: COMPANY_INFO.email, dir: 'ltr' },
                                 { icon: MapPin, label: t('contact.address'), value: COMPANY_INFO.address[lang] || COMPANY_INFO.address.ar, full: true }
                             ].map((item, idx) => (
-                                <div key={idx} className={`bg-white p-10 rounded-[3rem] border border-slate-100 shadow-sm card-hover flex flex-col justify-between ${item.full ? 'sm:col-span-2' : ''}`}>
-                                    <div className="w-16 h-16 bg-brand-muted text-brand-accent rounded-2xl flex items-center justify-center mb-10">
+                                <div key={idx} className={`bg-brand-surface p-10 rounded-[3rem] border border-brand-slate/10 shadow-sm card-hover flex flex-col justify-between transition-all duration-700 ${item.full ? 'sm:col-span-2' : ''}`}>
+                                    <div className="w-16 h-16 bg-brand-muted text-brand-text rounded-2xl flex items-center justify-center mb-10 border border-brand-slate/10 shadow-sm transition-colors duration-700">
                                         <item.icon size={32} />
                                     </div>
                                     <div>
-                                        <h3 className="text-sm font-bold text-slate-400 uppercase tracking-widest mb-2">{item.label}</h3>
-                                        <p className={`text-2xl font-bold text-brand-primary font-display break-words ${item.dir === 'ltr' ? 'ltr:text-left rtl:text-right' : ''}`} dir={item.dir}>
+                                        <h3 className="text-sm font-bold text-brand-slate uppercase tracking-widest mb-2 opacity-60">{item.label}</h3>
+                                        <p className={`text-2xl font-bold text-brand-text font-display break-words ${item.dir === 'ltr' ? 'ltr:text-left rtl:text-right' : ''}`} dir={item.dir}>
                                             {item.value}
                                         </p>
                                     </div>
@@ -51,18 +51,18 @@ const Contact = () => {
 
                         {/* Premium WhatsApp CTA */}
                         <div className="lg:col-span-5 relative group">
-                            <div className="absolute inset-0 bg-brand-primary rounded-[4rem] -rotate-2 group-hover:rotate-0 transition-transform duration-500"></div>
-                            <div className="relative h-full bg-brand-primary p-12 lg:p-16 rounded-[4rem] text-white flex flex-col justify-between overflow-hidden">
+                            <div className="absolute inset-0 bg-brand-primary rounded-[4rem] group-hover:scale-[1.01] transition-transform duration-500"></div>
+                            <div className="relative h-full bg-brand-primary p-12 lg:p-16 rounded-[4rem] text-white flex flex-col justify-between overflow-hidden transition-colors duration-700">
                                 <div className="absolute top-0 right-0 p-12 text-white/5 -z-0">
-                                    <MessageCircle size={280} strokeWidth={0.5} />
+                                    <MessageCircle size={280} strokeWidth={0.5} className="text-white/5" />
                                 </div>
 
                                 <div className="relative z-10">
                                     <div className="w-24 h-24 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center mb-12 animate-pulse">
                                         <MessageCircle size={56} className="text-brand-whatsapp" />
                                     </div>
-                                    <h2 className="text-4xl lg:text-5xl font-black mb-8 leading-tight font-display">{t('contact.chat_title')}</h2>
-                                    <p className="text-xl text-slate-300 mb-12 leading-relaxed">
+                                    <h2 className="text-4xl lg:text-5xl font-black mb-8 leading-tight font-display text-white">{t('contact.chat_title')}</h2>
+                                    <p className="text-xl text-white/70 mb-12 leading-relaxed">
                                         {t('contact.chat_desc')}
                                     </p>
                                 </div>

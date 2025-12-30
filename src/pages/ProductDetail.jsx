@@ -22,12 +22,12 @@ const ProductDetail = () => {
     const whatsappMessage = encodeURIComponent(t('labels.prefilled_message', { name: product.name[lang] || product.name.ar, id: product.id }));
 
     return (
-        <div className="bg-white min-h-screen pt-32 pb-12 lg:pb-20">
+        <div className="bg-brand-muted min-h-screen pt-32 pb-12 lg:pb-20 transition-colors duration-700">
             <div className="container mx-auto px-4">
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-16 lg:gap-24 items-start">
                     {/* Image Side */}
-                    <div className="rounded-[2.5rem] overflow-hidden shadow-2xl shadow-slate-200/50 bg-brand-surface aspect-[4/5] relative group">
+                    <div className="rounded-[2.5rem] overflow-hidden shadow-2xl shadow-brand-slate/10 bg-brand-surface aspect-[4/5] relative group transition-all duration-700">
                         <img
                             src={product.image}
                             alt={product.name[lang]}
@@ -35,9 +35,9 @@ const ProductDetail = () => {
                         />
                     </div>
 
-                    {/* Effort Side */}
+                    {/* Content Side */}
                     <div className="flex flex-col pt-4">
-                        <h1 className="text-4xl md:text-6xl font-extrabold text-brand-primary mb-6 leading-[1.1]">
+                        <h1 className="text-4xl md:text-6xl font-extrabold text-brand-text mb-6 leading-[1.1]">
                             {product.name[lang] || product.name.ar}
                         </h1>
                         <div className="text-4xl font-bold text-brand-accent mb-10">
@@ -45,26 +45,26 @@ const ProductDetail = () => {
                         </div>
 
                         <div className="prose prose-slate max-w-none mb-12">
-                            <p className="text-xl text-slate-600 leading-relaxed">
+                            <p className="text-xl text-brand-slate leading-relaxed">
                                 {product.details[lang] || product.details.ar}
                             </p>
                         </div>
 
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12 bg-slate-50 p-8 rounded-3xl">
-                            <div className="flex items-center gap-3 text-slate-700">
-                                <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12 bg-brand-surface p-8 rounded-3xl border border-brand-slate/10 transition-colors duration-700">
+                            <div className="flex items-center gap-3 text-brand-text">
+                                <div className="w-10 h-10 rounded-full bg-green-500/10 flex items-center justify-center text-green-500">
                                     <CheckCircle2 size={20} />
                                 </div>
                                 <span className="font-semibold">{t('labels.stock')}</span>
                             </div>
-                            <div className="flex items-center gap-3 text-slate-700">
-                                <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600">
+                            <div className="flex items-center gap-3 text-brand-text">
+                                <div className="w-10 h-10 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-600">
                                     <Truck size={20} />
                                 </div>
                                 <span className="font-semibold">{t('labels.handling')}</span>
                             </div>
-                            <div className="flex items-center gap-3 text-slate-700 sm:col-span-2">
-                                <div className="w-10 h-10 rounded-full bg-slate-200 flex items-center justify-center text-slate-700">
+                            <div className="flex items-center gap-3 text-brand-text sm:col-span-2">
+                                <div className="w-10 h-10 rounded-full bg-brand-slate/10 flex items-center justify-center text-brand-slate">
                                     <ShieldCheck size={20} />
                                 </div>
                                 <span className="font-semibold">{t('labels.quality')}</span>
@@ -82,7 +82,7 @@ const ProductDetail = () => {
                                 {t('buttons.order_whatsapp')}
                             </a>
 
-                            <p className="text-slate-400 text-sm md:text-base text-center italic">
+                            <p className="text-brand-slate opacity-60 text-sm md:text-base text-center italic">
                                 {t('nav.whatsapp_support')}
                             </p>
                         </div>

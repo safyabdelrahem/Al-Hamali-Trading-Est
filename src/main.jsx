@@ -5,10 +5,14 @@ import App from './App.jsx'
 import './index.css'
 import './i18n'
 
+import { ThemeProvider } from './context/ThemeContext.jsx'
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <ThemeProvider>
+        <App />
+      </ThemeProvider>
     </BrowserRouter>
   </React.StrictMode>,
 )
